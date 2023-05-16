@@ -2,32 +2,50 @@ import 'package:flutter/material.dart';
 
 import '../assets.dart';
 import '../styles.dart';
-import 'title_screen_ui.dart'; // Add this import
+import 'title_screen_ui.dart';
 
-class TitleScreen extends StatelessWidget {
+class TitleScreen extends StatefulWidget {
   const TitleScreen({super.key});
+
+  @override
+  State<TitleScreen> createState() => _TitleScreenState();
+}
+
+class _TitleScreenState extends State<TitleScreen> {
+  /// focusable_control_builder 패키지에서 isHovered 를 이용하여 마우스 움직임 감지
+  Color get _emitColor => AppColors.emitColors[_difficultyOverride ?? _difficulty];
+  Color get _orbColor => AppColors.orbColors[_difficultyOverride ?? _difficulty];
+
+  /// Currently selected difficulty
+  int _difficulty = 0;
+
+  /// Currently focused difficulty (if any)
+  int? _difficultyOverride;
+
+  void _handleDifficultyPressed(int value) {
+    setState(() => _difficulty = value);
+  }
+
+  void _handleDifficultyFocused(int? value) {
+    setState(() => _difficultyOverride = value);
+  }
 
   final _finalReceiveLightAmt = 0.7;
   final _finalEmitLightAmt = 0.5;
 
   @override
   Widget build(BuildContext context) {
-    // 처음엔 녹색 계열
-    final orbColor = AppColors.orbColors[0]; // Add this final variable
-    final emitColor = AppColors.emitColors[0]; // And this one
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: Stack(
-          // 배경 이미지를 같은 레이어에 쭉 쌓은 느낌
           children: [
             /// Bg-Base
             Image.asset(AssetPaths.titleBgBase),
 
             /// Bg-Receive
             _LitImage(
-              color: orbColor,
+              color: _orbColor,
               imgSrc: AssetPaths.titleBgReceive,
               lightAmt: _finalReceiveLightAmt,
             ),
@@ -35,21 +53,21 @@ class TitleScreen extends StatelessWidget {
             /// Mg-Base
             _LitImage(
               imgSrc: AssetPaths.titleMgBase,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
 
             /// Mg-Receive
             _LitImage(
               imgSrc: AssetPaths.titleMgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
 
             /// Mg-Emit
             _LitImage(
               imgSrc: AssetPaths.titleMgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
             ),
 
@@ -59,22 +77,25 @@ class TitleScreen extends StatelessWidget {
             /// Fg-Receive
             _LitImage(
               imgSrc: AssetPaths.titleFgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
 
             /// Fg-Emit
             _LitImage(
               imgSrc: AssetPaths.titleFgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
             ),
 
             /// UI
-            const Positioned.fill(
-              // Add from here...
-              child: TitleScreenUi(),
-            ), // to here.
+            Positioned.fill(
+              child: TitleScreenUi(
+                difficulty: _difficulty,
+                onDifficultyFocused: _handleDifficultyFocused,
+                onDifficultyPressed: _handleDifficultyPressed,
+              ),
+            ),
           ],
         ),
       ),
@@ -82,7 +103,6 @@ class TitleScreen extends StatelessWidget {
   }
 }
 
-/// 불러온 이미지를 설정된 색과 빛의 밝기에 따라 블렌딩
 class _LitImage extends StatelessWidget {
   const _LitImage({
     required this.color,
@@ -95,13 +115,10 @@ class _LitImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// 색을 HSL (for hue, saturation, lightness) 형태로 변환
     final hsl = HSLColor.fromColor(color);
     return Image.asset(
       imgSrc,
-      // Receive, Emit에 따른 밝기 scale
       color: hsl.withLightness(hsl.lightness * lightAmt).toColor(),
-      // 읽어온 이미지에 위에 설정한 색을 blending
       colorBlendMode: BlendMode.modulate,
     );
   }
