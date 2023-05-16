@@ -36,3 +36,12 @@
 + [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Paint in color</summary>
+
+![step3-step3-paint-in-color](./assets/references/step3-paint-in-color.png)
++ [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step3-paint-in-color)
++ [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>

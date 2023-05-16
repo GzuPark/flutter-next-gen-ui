@@ -1,41 +1,79 @@
 import 'package:flutter/material.dart';
 
 import '../assets.dart';
+import '../styles.dart'; // Add this import
 
 class TitleScreen extends StatelessWidget {
   const TitleScreen({super.key});
 
+  final _finalReceiveLightAmt = 0.7; // Add this attribute
+  final _finalEmitLightAmt = 0.5; // And this attribute
+
   @override
   Widget build(BuildContext context) {
+    // 처음엔 녹색 계열
+    final orbColor = AppColors.orbColors[0]; // Add this final variable
+    final emitColor = AppColors.emitColors[0]; // And this one
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        // 배경 이미지를 같은 레이어에 쭉 쌓은 느낌
         child: Stack(
+          // 배경 이미지를 같은 레이어에 쭉 쌓은 느낌
           children: [
             /// Bg-Base
             Image.asset(AssetPaths.titleBgBase),
 
             /// Bg-Receive
-            Image.asset(AssetPaths.titleBgReceive),
+            _LitImage(
+              // Modify from here...
+              color: orbColor,
+              imgSrc: AssetPaths.titleBgReceive,
+              lightAmt: _finalReceiveLightAmt,
+            ), // to here.
 
             /// Mg-Base
-            Image.asset(AssetPaths.titleMgBase),
+            _LitImage(
+              // Modify from here...
+              imgSrc: AssetPaths.titleMgBase,
+              color: orbColor,
+              lightAmt: _finalReceiveLightAmt,
+            ), // to here.
 
             /// Mg-Receive
-            Image.asset(AssetPaths.titleMgReceive),
+            _LitImage(
+              // Modify from here...
+              imgSrc: AssetPaths.titleMgReceive,
+              color: orbColor,
+              lightAmt: _finalReceiveLightAmt,
+            ), // to here.
 
             /// Mg-Emit
-            Image.asset(AssetPaths.titleMgEmit),
+            _LitImage(
+              // Modify from here...
+              imgSrc: AssetPaths.titleMgEmit,
+              color: emitColor,
+              lightAmt: _finalEmitLightAmt,
+            ), // to here.
 
             /// Fg-Rocks
             Image.asset(AssetPaths.titleFgBase),
 
             /// Fg-Receive
-            Image.asset(AssetPaths.titleFgReceive),
+            _LitImage(
+              // Modify from here...
+              imgSrc: AssetPaths.titleFgReceive,
+              color: orbColor,
+              lightAmt: _finalReceiveLightAmt,
+            ), // to here.
 
             /// Fg-Emit
-            Image.asset(AssetPaths.titleFgEmit),
+            _LitImage(
+              // Modify from here...
+              imgSrc: AssetPaths.titleFgEmit,
+              color: emitColor,
+              lightAmt: _finalEmitLightAmt,
+            ), // to here.
           ],
         ),
       ),
@@ -45,7 +83,6 @@ class TitleScreen extends StatelessWidget {
 
 /// 불러온 이미지를 설정된 색과 빛의 밝기에 따라 블렌딩
 class _LitImage extends StatelessWidget {
-  // Add from here...
   const _LitImage({
     required this.color,
     required this.imgSrc,
