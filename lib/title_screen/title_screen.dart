@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../assets.dart';
-import '../styles.dart'; // Add this import
+import '../styles.dart';
+import 'title_screen_ui.dart'; // Add this import
 
 class TitleScreen extends StatelessWidget {
   const TitleScreen({super.key});
 
-  final _finalReceiveLightAmt = 0.7; // Add this attribute
-  final _finalEmitLightAmt = 0.5; // And this attribute
+  final _finalReceiveLightAmt = 0.7;
+  final _finalEmitLightAmt = 0.5;
 
   @override
   Widget build(BuildContext context) {
@@ -26,53 +27,53 @@ class TitleScreen extends StatelessWidget {
 
             /// Bg-Receive
             _LitImage(
-              // Modify from here...
               color: orbColor,
               imgSrc: AssetPaths.titleBgReceive,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Base
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgBase,
               color: orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Receive
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgReceive,
               color: orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Emit
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgEmit,
               color: emitColor,
               lightAmt: _finalEmitLightAmt,
-            ), // to here.
+            ),
 
             /// Fg-Rocks
             Image.asset(AssetPaths.titleFgBase),
 
             /// Fg-Receive
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleFgReceive,
               color: orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Fg-Emit
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleFgEmit,
               color: emitColor,
               lightAmt: _finalEmitLightAmt,
+            ),
+
+            /// UI
+            const Positioned.fill(
+              // Add from here...
+              child: TitleScreenUi(),
             ), // to here.
           ],
         ),
