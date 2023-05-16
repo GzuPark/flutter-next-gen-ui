@@ -16,3 +16,14 @@
 + [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+### Paint the scene
+
+<details>
+<summary>Add assets to the scene</summary>
+
+![step3-add-assets-to-the-scene](./assets/references/step3-add-assets-to-the-scene.png)
++ [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step3-add-assets-to-the-scene)
++ [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
