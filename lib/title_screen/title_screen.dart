@@ -42,3 +42,29 @@ class TitleScreen extends StatelessWidget {
     );
   }
 }
+
+/// 불러온 이미지를 설정된 색과 빛의 밝기에 따라 블렌딩
+class _LitImage extends StatelessWidget {
+  // Add from here...
+  const _LitImage({
+    required this.color,
+    required this.imgSrc,
+    required this.lightAmt,
+  });
+  final Color color;
+  final String imgSrc;
+  final double lightAmt;
+
+  @override
+  Widget build(BuildContext context) {
+    /// 색을 HSL (for hue, saturation, lightness) 형태로 변환
+    final hsl = HSLColor.fromColor(color);
+    return Image.asset(
+      imgSrc,
+      // Receive, Emit에 따른 밝기 scale
+      color: hsl.withLightness(hsl.lightness * lightAmt).toColor(),
+      // 읽어온 이미지에 위에 설정한 색을 blending
+      colorBlendMode: BlendMode.modulate,
+    );
+  }
+}
