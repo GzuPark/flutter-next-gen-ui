@@ -10,21 +10,19 @@ import '../styles.dart';
 class TitleScreenUi extends StatelessWidget {
   const TitleScreenUi({
     super.key,
-    // 난이도 변수에 따라 설정이 변경
-    required this.difficulty, // Edit from here...
+    required this.difficulty,
     required this.onDifficultyPressed,
     required this.onDifficultyFocused,
   });
 
   final int difficulty;
   final void Function(int difficulty) onDifficultyPressed;
-  final void Function(int? difficulty) onDifficultyFocused; // to here.
+  final void Function(int? difficulty) onDifficultyFocused;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      // Move this const...
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 50), // to here.
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 50),
       child: Stack(
         children: [
           /// Title Text
@@ -45,6 +43,18 @@ class TitleScreenUi extends StatelessWidget {
                 difficulty: difficulty,
                 onDifficultyPressed: onDifficultyPressed,
                 onDifficultyFocused: onDifficultyFocused,
+              ),
+            ),
+          ),
+
+          /// StartBtn
+          BottomRight(
+            // Add from here...
+            child: UiScaler(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20, right: 40),
+                child: _StartBtn(onPressed: () {}),
               ),
             ),
           ), // to here.
@@ -181,6 +191,54 @@ class _DifficultyBtn extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _StartBtn extends StatefulWidget {
+  const _StartBtn({required this.onPressed});
+  final VoidCallback onPressed;
+
+  @override
+  State<_StartBtn> createState() => _StartBtnState();
+}
+
+class _StartBtnState extends State<_StartBtn> {
+  AnimationController? _btnAnim;
+  bool _wasHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    // https://pub.dev/packages/focusable_control_builder
+    return FocusableControlBuilder(
+      cursor: SystemMouseCursors.click,
+      onPressed: widget.onPressed,
+      builder: (_, state) {
+        if ((state.isHovered || state.isFocused) && !_wasHovered && _btnAnim?.status != AnimationStatus.forward) {
+          _btnAnim?.forward(from: 0);
+        }
+        _wasHovered = (state.isHovered || state.isFocused);
+        return SizedBox(
+          width: 520,
+          height: 100,
+          child: Stack(
+            children: [
+              Positioned.fill(child: Image.asset(AssetPaths.titleStartBtn)),
+              if (state.isHovered || state.isFocused) ...[
+                Positioned.fill(child: Image.asset(AssetPaths.titleStartBtnHover)),
+              ],
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text('START MISSION', style: TextStyles.btn.copyWith(fontSize: 24, letterSpacing: 18)),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
