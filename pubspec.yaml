@@ -39,3 +39,6 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+  shaders:
+  - assets/shaders/orb_shader.frag
+  - assets/shaders/ui_glitch.frag

@@ -1,10 +1,13 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart'; // Add this import
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart'; // Add this import
 
 import '../assets.dart';
+import '../common/shader_effect.dart'; // And this import
+import '../common/ticking_builder.dart'; // And this import
 import '../common/ui_scaler.dart';
 import '../styles.dart';
 
@@ -70,7 +73,8 @@ class _TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    Widget content = Column(
+      // Modify this line
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -91,8 +95,33 @@ class _TitleText extends StatelessWidget {
           // 라고 하는데 Animate()를 따로 쓰지 않아도 모든 위젯에 animate() 메서드를 사용할 수 있는 것 같음
         ).animate().fadeIn(delay: .8.seconds, duration: .7.seconds),
         Text('INTO THE UNKNOWN', style: TextStyles.h3).animate().fadeIn(delay: 1.seconds, duration: .7.seconds),
-      ], // to here.
+      ],
     );
+    return Consumer<FragmentPrograms?>(
+      // Add from here...
+      builder: (context, fragmentPrograms, _) {
+        if (fragmentPrograms == null) return content;
+        return TickingBuilder(
+          builder: (context, time) {
+            return AnimatedSampler(
+              (image, size, canvas) {
+                const double overdrawPx = 30;
+                // ui_glitch.frag 내용 호출, FragmentShader 객체 생성
+                final shader = fragmentPrograms.ui.fragmentShader();
+                shader
+                  ..setFloat(0, size.width)
+                  ..setFloat(1, size.height)
+                  ..setFloat(2, time)
+                  ..setImageSampler(0, image);
+                Rect rect = Rect.fromLTWH(-overdrawPx, -overdrawPx, size.width + overdrawPx, size.height + overdrawPx);
+                canvas.drawRect(rect, Paint()..shader = shader);
+              },
+              child: content,
+            );
+          },
+        );
+      },
+    ); // to here.
   }
 }
 

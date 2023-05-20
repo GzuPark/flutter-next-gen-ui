@@ -135,3 +135,15 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+### Add fragment shaders
+
+<details>
+<summary>Distorting the title with a fragment shader</summary>
+
+![step6-distorting-the-title-with-a-fragment-shader](./assets/references/step6-distorting-the-title-with-a-fragment-shader.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step6-distorting-the-title-with-a-fragment-shader)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
