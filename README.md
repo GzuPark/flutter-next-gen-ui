@@ -125,3 +125,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Animate the color change</summary>
+
+![step5-animate-the-color-change](./assets/references/step5-animate-the-color-change.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step5-animate-the-color-change)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
