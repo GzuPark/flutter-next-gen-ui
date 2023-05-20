@@ -105,3 +105,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Fade in the start button</summary>
+
+![step5-fade-in-the-start-button](./assets/references/step5-fade-in-the-start-button.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step5-fade-in-the-start-button)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>

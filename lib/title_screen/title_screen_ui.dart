@@ -253,9 +253,12 @@ class _StartBtnState extends State<_StartBtn> {
                 ),
               ),
             ],
-          ),
-        );
-      },
+          ) // Edit from here...
+              // 마우스 오버하면 검은색이 왼쪽에서 오른쪽으로 지나가는 효과
+              .animate(autoPlay: false, onInit: (c) => _btnAnim = c)
+              .shimmer(duration: .7.seconds, color: Colors.black),
+        ).animate().fadeIn(delay: 2.3.seconds).slide(begin: const Offset(0, .2));
+      }, // to here.
     );
   }
 }
