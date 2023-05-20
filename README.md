@@ -95,3 +95,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Fade in the difficulty buttons</summary>
+
+![step5-fade-in-the-difficulty-buttons](./assets/references/step5-fade-in-the-difficulty-buttons.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step5-fade-in-the-difficulty-buttons)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
