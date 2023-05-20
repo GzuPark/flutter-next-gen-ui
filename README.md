@@ -169,3 +169,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Add particles everywhere — even the web</summary>
+
+![step7-add-particles-everywhere-even-the-web](./assets/references/step7-add-particles-everywhere-even-the-web.png)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step7-add-particles-everywhere-even-the-web)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
