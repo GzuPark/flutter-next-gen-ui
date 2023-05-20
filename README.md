@@ -157,3 +157,15 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+### Add particle animations
+
+<details>
+<summary>Add particles everywhere</summary>
+
+![step7-add-particles-everywhere](./assets/references/step7-add-particles-everywhere.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step7-add-particles-everywhere)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>

@@ -1,14 +1,15 @@
-import 'dart:math'; // Add this import
-import 'dart:ui'; // And this import
+import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Add this import
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../assets.dart';
-import '../orb_shader/orb_shader_config.dart'; // And this import
-import '../orb_shader/orb_shader_widget.dart'; // And this import too
+import '../orb_shader/orb_shader_config.dart';
+import '../orb_shader/orb_shader_widget.dart';
 import '../styles.dart';
+import 'particle_overlay.dart'; // Add this import
 import 'title_screen_ui.dart';
 
 class TitleScreen extends StatefulWidget {
@@ -199,6 +200,17 @@ class _TitleScreenState extends State<TitleScreen> with SingleTickerProviderStat
                     pulseEffect: _pulseEffect,
                     lightAmt: _finalEmitLightAmt,
                   ),
+
+                  /// Particle Field
+                  Positioned.fill(
+                    // Add from here...
+                    child: IgnorePointer(
+                      child: ParticleOverlay(
+                        color: orbColor,
+                        energy: _orbEnergy,
+                      ),
+                    ),
+                  ), // to here.
 
                   /// Fg-Rocks
                   Image.asset(AssetPaths.titleFgBase),
