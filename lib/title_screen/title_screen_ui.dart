@@ -17,11 +17,13 @@ class TitleScreenUi extends StatelessWidget {
     required this.difficulty,
     required this.onDifficultyPressed,
     required this.onDifficultyFocused,
+    required this.onStartPressed, // Add this argument
   });
 
   final int difficulty;
   final void Function(int difficulty) onDifficultyPressed;
   final void Function(int? difficulty) onDifficultyFocused;
+  final VoidCallback onStartPressed; // Add this attribute
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +55,15 @@ class TitleScreenUi extends StatelessWidget {
 
           /// StartBtn
           BottomRight(
-            // Add from here...
             child: UiScaler(
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20, right: 40),
-                child: _StartBtn(onPressed: () {}),
+                // Start 버튼을 눌렀을 때 동작하는 기능, VoidCallback 이라 별 다른 동작 없음
+                child: _StartBtn(onPressed: onStartPressed), // Edit this line
               ),
             ),
-          ), // to here.
+          ),
         ],
       ),
     );

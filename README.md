@@ -147,3 +147,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Add the orb</summary>
+
+![step6-add-the-orb](./assets/references/step6-add-the-orb.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step6-add-the-orb)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>
