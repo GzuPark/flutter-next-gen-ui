@@ -83,3 +83,15 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+### Add animation
+
+<details>
+<summary>Fade in the title</summary>
+
+![step5-fade-in-the-title](./assets/references/step5-fade-in-the-title.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step5-fade-in-the-title)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>

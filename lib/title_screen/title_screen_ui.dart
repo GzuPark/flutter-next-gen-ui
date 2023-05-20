@@ -1,6 +1,7 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
-import 'package:focusable_control_builder/focusable_control_builder.dart'; // Add import
+import 'package:flutter_animate/flutter_animate.dart'; // Add this import
+import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:gap/gap.dart';
 
 import '../assets.dart';
@@ -84,10 +85,13 @@ class _TitleText extends StatelessWidget {
             Image.asset(AssetPaths.titleSelectedLeft, height: 65),
             Text('57', style: TextStyles.h2),
             Image.asset(AssetPaths.titleSelectedRight, height: 65),
-          ],
-        ),
-        Text('INTO THE UNKNOWN', style: TextStyles.h3),
-      ],
+          ], // Edit from here...
+          // https://pub.dev/packages/flutter_animate
+          // It also adds an .animate() extension method to all widgets, which wraps the widget in Animate().
+          // 라고 하는데 Animate()를 따로 쓰지 않아도 모든 위젯에 animate() 메서드를 사용할 수 있는 것 같음
+        ).animate().fadeIn(delay: .8.seconds, duration: .7.seconds),
+        Text('INTO THE UNKNOWN', style: TextStyles.h3).animate().fadeIn(delay: 1.seconds, duration: .7.seconds),
+      ], // to here.
     );
   }
 }
