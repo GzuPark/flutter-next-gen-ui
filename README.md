@@ -115,3 +115,13 @@
 - [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
 
 </details>
+
+<details>
+<summary>Animate the difficulty hover effect</summary>
+
+![step5-animate-the-difficulty-hover-effect](./assets/references/step5-animate-the-difficulty-hover-effect.gif)
+
+- [Go tag](https://github.com/gzupark/flutter-next-gen-ui/tree/step5-animate-the-difficulty-hover-effect)
+- [Go main](https://github.com/GzuPark/flutter-next-gen-ui)
+
+</details>

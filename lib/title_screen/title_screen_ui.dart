@@ -174,12 +174,18 @@ class _DifficultyBtn extends StatelessWidget {
             child: Stack(
               children: [
                 /// Bg with fill and outline
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF00D1FF).withOpacity(.1),
-                    border: Border.all(color: Colors.white, width: 5),
+                // 마우스 오버 혹은 선택 동작으로 난이도가 약간 불투명해지는 것을 애니메이션 효과로 진행
+                AnimatedOpacity(
+                  // Edit from here
+                  opacity: (!selected && (state.isHovered || state.isFocused)) ? 1 : 0,
+                  duration: .3.seconds,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF00D1FF).withOpacity(.1),
+                      border: Border.all(color: Colors.white, width: 5),
+                    ),
                   ),
-                ),
+                ), // to here.
 
                 if (state.isHovered || state.isFocused) ...[
                   Container(
